@@ -165,7 +165,6 @@ img {
 }
 img {
     margin: 30px auto;
-
     opacity: 0;
     -webkit-transition: opacity .3s ease-in;
     transition: opacity .3s ease-in;
