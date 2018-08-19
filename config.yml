@@ -1,6 +1,6 @@
 # Copied files to public folder when build
 copy:
-    - static
+    - bundle
     - favicon.png
     - robots.txt
 # I18n Support
