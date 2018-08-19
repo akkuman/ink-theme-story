@@ -163,6 +163,24 @@ img {
     max-width: 100%;
     height: auto;
 }
+img {
+    margin: 30px auto;
+
+    opacity: 0;
+    -webkit-transition: opacity .3s ease-in;
+    transition: opacity .3s ease-in;
+    border-radius: 5px;
+}
+.image-alt {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+.searched {
+   background-color: yellow;
+}
 blockquote {
     font-size: 0.8em;
     display: block;

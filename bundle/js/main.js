@@ -105,29 +105,87 @@ var initSearch = function() {
       workerStarted = true
     }
   })
-}
+};
 
 $(function() {
-  // append image description
-  /*
-  $('img').each(function(idx, item) {
-    $item = $(item)
+  // append image description and zoom-vanilla.js action
+  $('img').each(function() {
+    $item = $(this)
+    $item.attr('data-action', 'zoom')
     if ($item.attr('data-src')) {
-      $item.wrap('<a href="' + $item.attr('data-src') + '" target="_blank"></a>')
       var imageAlt = $item.prop('alt')
-      if ($.trim(imageAlt)) $item.parent('a').after('<div class="image-alt">' + imageAlt + '</div>')
+      if ($.trim(imageAlt)) $item.after('<div class="image-alt">' + imageAlt + '</div>')
     }
-  })
-  */
+  });
   // lazy load images
   if ($('img').unveil) {
     $('img').unveil(200, function() {
       $(this).load(function() {
-        this.style.opacity = 1
-      })
-    })
+        this.style.opacity = 1;
+      });
+    });
   }
   //init search
   initSearch()
 })
+
+
+
+/**
+ * jQuery Unveil
+ * A very lightweight jQuery plugin to lazy load images
+ * http://luis-almeida.github.com/unveil
+ *
+ * Licensed under the MIT license.
+ * Copyright 2013 Luís Almeida
+ * https://github.com/luis-almeida
+ */
+
+;(function($) {
+
+  $.fn.unveil = function(threshold, callback) {
+
+    var $w = $(window),
+        th = threshold || 0,
+        retina = window.devicePixelRatio > 1,
+        attrib = retina? "data-src-retina" : "data-src",
+        images = this,
+        loaded;
+
+    this.one("unveil", function() {
+      var source = this.getAttribute(attrib);
+      source = source || this.getAttribute("data-src");
+      if (source) {
+        this.setAttribute("src", source);
+        if (typeof callback === "function") callback.call(this);
+      }
+    });
+
+    function unveil() {
+      var inview = images.filter(function() {
+        var $e = $(this);
+        if ($e.is(":hidden")) return;
+
+        var wt = $w.scrollTop(),
+            wb = wt + $w.height(),
+            et = $e.offset().top,
+            eb = et + $e.height();
+
+        return eb >= wt - th && et <= wb + th;
+      });
+
+      loaded = inview.trigger("unveil");
+      images = images.not(loaded);
+    }
+
+    $w.on("scroll.unveil resize.unveil lookup.unveil", unveil);
+
+    unveil();
+
+    return this;
+
+  };
+
+})(window.jQuery || window.Zepto);
+
 
