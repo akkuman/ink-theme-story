@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{template "head" .}}
+        <meta name="keywords" content="{{.Site.Title}}, {{.Site.Subtitle}}">
+        <meta name="description" content="{{.Site.Subtitle}}">
+        <meta name="author" content="{{.Author.Name}}">
+        <title>{{.Site.Title}}</title>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+        <![endif]-->
+        {{template "header" .}}
+        <div id="body" class="clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="main" class="col-12 clearfix" role="main">
+                        <article class="posti" itemscope itemtype="http://schema.org/BlogPosting">
+                            <div class="site">
+                                <h1 class="title">{{.Site.Title}}</h1>
+                                <h2 class="subtitle">{{.Site.Subtitle}}</h2>
+                            </div>
+                            <!-- 总分类&标签 -->
+                            <h3>{{i18n "tag"}} - {{.Total}} {{i18n "articles"}}</h3>
+                            <div class="post-tags">
+                                <!-- 分类 -->
+                                <!--
+                                <h4>Category</h4>
+                                <ul>
+                                    <li rel="tag"><a href="category/nichijou/index.html">日常</a></li>
+                                    <li rel="tag"><a href="category/code/index.html">代码</a></li>
+                                    <li rel="tag"><a href="category/poem/index.html">诗</a></li>
+                                    <li rel="tag"><a href="category/thought/index.html">感想</a></li>
+                                    <li rel="tag"><a href="category/history/index.html">历史</a></li>
+                                </ul>
+                                -->
+                                <!-- 标签 -->
+                                <h4>Tag</h4>
+                                <ul>
+                                    {{range .Tag}}
+                                    <li rel="tag"><a href="{{$.Site.Root}}/tag/{{.Name}}/index.html">{{.Name}} ({{.Count}})</a></li>
+                                    {{end}}
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end #body -->
+        {{template "footer" .}}
+    </body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {{template "head" .}}
+        <meta name="keywords" content="{{.Site.Subtitle}}">
+        <meta name="description" content="{{.Site.Subtitle}}">
+        <title>{{.Site.Title}}</title>
+    </head>
+    <body>
+        <article class="container">
+            {{template "header" .}}
+            <article class="main tag">
+                <header class="site">
+                    <h1 class="title">{{.Site.Title}}</h1>
+                    <h2 class="subtitle">{{.Site.Subtitle}}</h2>
+                </header>
+                <header class="header">
+                    <span class="title">{{i18n "tag"}} -</span>
+                    <span class="subtitle">{{.Total}} {{i18n "articles"}}</span>
+                </header>
+                <ul class="tag-list clearfix">
+                    {{range .Tag}}
+                    <li class="tag-item">
+                        <a class="tag-name" href="{{$.Site.Root}}/tag/{{.Name}}/index.html">{{.Name}}<span class="tag-count"> ({{.Count}})</span></a>
+                    </li>
+                    {{end}}
+                </ul>
+            </article>
+        </article>
+        {{template "footer" .}}
+    </body>
+    <script src="{{.Site.Root}}/static/js/index.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{template "head" .}}
+        <meta name="keywords" content="{{.Site.Title}}, {{.Site.Subtitle}}">
+        <meta name="description" content="{{.Site.Subtitle}}">
+        <meta name="author" content="{{.Author.Name}}">
+        <title>{{.Site.Title}}</title>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+        <![endif]-->
+        {{template "header" .}}
+        <div id="body" class="clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="main" class="col-12 clearfix" role="main">
+                        <article class="posti" itemscope itemtype="http://schema.org/BlogPosting">
+                            <div class="site">
+                                <h1 class="title">{{.Site.Title}}</h1>
+                                <h2 class="subtitle">{{.Site.Subtitle}}</h2>
+                            </div>
+                            <h3>{{i18n "archive"}} - {{.Total}} {{i18n "articles"}}</h3>
+                            <div id="archives">
+                                {{range .Archive}}
+                                <h4>{{.Year}}</h4>
+                                <ul>
+                                    {{range .Articles}}
+                                    <li>{{.Date}}：
+                                        <a href="{{.Link}}">{{.Title}}</a>
+                                    </li>
+                                    {{end}}
+                                </ul>
+                                {{end}}
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end #body -->
+        {{template "footer" .}}
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<header id="header" class="clearfix">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="logo">
+              <div class="header-logo">
+                <a href="/">
+                  <span class="b">A</span>
+                </a>
+                <a href="/">
+                  <span class="b">k</span>
+                </a>
+                <a href="/">
+                  <span class="b">k</span>
+                </a>
+                <a href="/">
+                  <span class="w">u</span>
+                </a>
+                <a href="/">
+                  <span class="b">m</span>
+                </a>
+                <a href="/">
+                  <span class="b">a</span>
+                </a>
+                <a href="/">
+                  <span class="b">n</span>
+                </a>
+                <a id="btn-menu" href="javascript:isMenu();">
+                    <span class="b">·</span>
+                </a>
+                <a href="javascript:isMenu1();">
+                    <span id="menu-1" class="bf">1</span>
+                </a>
+                <a href="javascript:isMenu2();">
+                    <span id="menu-2" class="bf">2</span>
+                </a>
+                <a href="javascript:isMenu3();">
+                    <span id="menu-3" class="bf">3</span>
+                </a>
+              </div>
+              <div id="menu-page">
+                <a href="{{.Site.Root}}/archive.html"><li>{{i18n "archive"}}</li></a>
+                <a href="{{.Site.Root}}/tag.html"><li>{{i18n "tag"}}</li></a>
+                {{if .Site.Url}}
+                <a href="{{.Site.Root}}/atom.xml"><li>{{i18n "rss"}}</li></a>
+                {{end}}
+                <a href="about.html"><li>{{i18n "about"}}</li></a>
+              </div>
+              <div id="search-box">
+                  <form id="search">
+                      <input autocomplete="off" type="text" name="s" id="menu-search" placeholder="{{i18n "search"}}..." data-root="{{.Site.Root}}" />
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  </header>
