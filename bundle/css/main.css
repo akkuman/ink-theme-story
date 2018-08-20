@@ -364,17 +364,17 @@ blockquote ul, blockquote ol {
     color: rgba(85, 85, 85, 0.5294117647058824) !important;
     color: #55555587 !important;
 }
-.posti h3:before {
+.posti h2:before {
     position: absolute;
     left: -20px;
     content: "#";
     color: #4caf50;
     font-weight: 400;
 }
-.posti h4 {
+.posti h3, #anchor-0 {
     color: #546e7a;
 }
-.posti h4:before {
+.posti h3:before, #anchor-0:before {
     position: absolute;
     margin-top: 1px;
     left: -15px;
@@ -692,11 +692,11 @@ blockquote ul, blockquote ol {
     }
 }
 @media (max-width: 780px){
-    .posti h3:before {
+    .posti h2:before {
         position: inherit;
         margin-right: 5px;
     }
-    .posti h4:before {
+    .posti h3:before {
         position: inherit;
         margin-right: 2px;
     }

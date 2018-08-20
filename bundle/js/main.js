@@ -1,12 +1,31 @@
+//generate TOC tree
+$(function() {
+  var tor_tree = document.createElement('div');
+  tor_tree.id = 'torTree';
+  tor_tree.innerHTML += ' <h4 id="anchor-0">导航树</h4>';
+  $(":header").each(function(index, element) {
+    var tag_name = $(this)[0].tagName;
+    var tag_a_html = '';
+    if (tag_name == 'H2'||tag_name == 'H3') {
+      var anchor_text = 'anchor-'+(index+1);
+      $(this).attr('id', anchor_text);
+      tag_a_html += '<a href="#' + anchor_text + '"><span class="tor' + 'i'.repeat(parseInt(tag_name.substr(-1,1))-1) + '">' + $(this)[0].innerText + '</span><br></a>';
+    }
+    tor_tree.innerHTML += tag_a_html;
+  });
+  $('.post-content').prepend(tor_tree.outerHTML);
+})
+
 //时间戳转时间
 $('time').each(function() {
-    var T = new Date(parseInt($(this).attr('datetime'))*1000);
-    //timetextlist=[Sun, Mar, 01, 2015]
-    var timetextlist = T.toDateString().split(' ');
-    var timetext = timetextlist[1] + ' ' + timetextlist[2] + ', ' + timetextlist[3];
-    $(this).html(timetext);
+  var T = new Date(parseInt($(this).attr('datetime'))*1000);
+  //timetextlist=[Sun, Mar, 01, 2015]
+  var timetextlist = T.toDateString().split(' ');
+  var timetext = timetextlist[1] + ' ' + timetextlist[2] + ', ' + timetextlist[3];
+  $(this).html(timetext);
 });
 
+// local search
 var searchTpl = '<li class="post-item grid-item"><a class="post-link" href="{{link}}">{{title}}<section class="post-content">{{preview}}</section></a></li>'
 
 // pick from underscore
