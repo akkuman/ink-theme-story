@@ -1,4 +1,4 @@
-{{if .Site.Comment}}
+
 <!--
 <div id="comments" class="gen">
     <section id="disqus_thread"></section>
@@ -11,4 +11,17 @@
     </script>
 </div>
 -->
+
+{{if .Site.Comment}}
+<div id="comments" class="gen">
+    <script>
+        document.write('<section id="disqus_thread"></section>');
+        var site_comment_load = function disqus() {
+            var d = document, s = d.createElement('script');
+            s.src = '//{{.Site.Comment}}.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+</div>
 {{end}}
