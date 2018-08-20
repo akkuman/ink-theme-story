@@ -73,7 +73,7 @@ var initSearch = function() {
       var wrap = '<span class="searched">' + keyword + '</span>'
       var reg = new RegExp(keyword, 'ig')
       title = title.replace(reg, wrap)
-      preview = preview.replace(reg, wrap)
+      preview = preview.replace(/<a.*?>(.*?)<\/a>/g,"$1").replace(reg, wrap)
     }
     return searchTpl
     .replace('{{title}}', title)
