@@ -148,6 +148,24 @@ $(function() {
   initSearch()
 })
 
+// get searched keywords from url
+var reg = new RegExp("(^|&)search=([^&]*)(&|$)")
+var r = window.location.search.substr(1).match(reg)
+if (r != null && r.toString().length > 1) {
+  var keywords = decodeURI(r[2]).split(',')
+  // highlight searched keywords
+  var content = document.body.innerHTML
+  for (var i = 0; i < keywords.length; i++) {
+    var keyword = keywords[i]
+    var wrap = '<span class="searched">' + keyword + '</span>'
+    var reg = new RegExp(keyword, 'ig')
+    content = content.replace(reg, wrap)
+  }
+  document.body.innerHTML = content
+  // scroll to the first searched keyword
+  var elmnt = document.getElementsByClassName("searched")
+  elmnt[0].scrollIntoView()
+}
 
 
 /**
