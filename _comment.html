@@ -1,20 +1,32 @@
 
 <!--
+{{if .Site.Comment}}
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
 <div id="comments" class="gen">
-    <section id="disqus_thread"></section>
-    <script type="text/javascript">
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//{{.Site.Comment}}.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
+    <script>
+        //来必力City版
+        document.write('<div id="lv-container" data-id="city" data-uid="{{.Site.Comment}}"></div>');
+            var site_comment_load = function livere() {
+                (function(d, s) {
+                    var j, e = d.getElementsByTagName(s)[0];
+                    if (typeof LivereTower === 'function') { return; }
+                    j = d.createElement(s);
+                    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                    j.async = true;
+                    e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+            }
+        document.write('');
     </script>
 </div>
+{{end}}
 -->
 
 {{if .Site.Comment}}
+<noscript>为正常使用Disqus评论功能请激活JavaScript</noscript>
 <div id="comments" class="gen">
     <script>
+        //Disqus
         document.write('<section id="disqus_thread"></section>');
         var site_comment_load = function disqus() {
             var d = document, s = d.createElement('script');
