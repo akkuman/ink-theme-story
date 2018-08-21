@@ -3,6 +3,18 @@
       <div class="row">
           <div class="logo">
               <div class="header-logo">
+                <script>
+                  var getwbclass = function() {
+                    var wbclass = ['b', 'w'];
+                    return wbclass[Math.floor(Math.random()*wbclass.length)];
+                  }
+                  var sitetitle = {{.Site.Title}};
+                  for (i in sitetitle) {
+                    document.write('<a href="/"><span class="' + getwbclass() + ' titlechar">' + sitetitle.charAt(i) + '</span></a>');
+                  }          
+                  //setInterval("$('span.titlechar').each(function(i,v){$(this).attr('class', getwbclass()+' titlechar')})",1000);
+                </script>
+                <!--
                 <a href="/">
                   <span class="b">A</span>
                 </a>
@@ -24,6 +36,7 @@
                 <a href="/">
                   <span class="b">n</span>
                 </a>
+                -->
                 <a id="btn-menu" href="javascript:isMenu();">
                     <span class="b">·</span>
                 </a>
