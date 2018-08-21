@@ -153,3 +153,9 @@ title: "关于本站"
 本主题支持Disqus和来必力评论系统
 
 切换的话只需要修改站点配置文件`blog/config.yml`, 把`comment`字段的值修改成来必力的`data-uid`(*可在来必力后台代码管理中看到*), 然后打开`blog/ink-theme-story/_comment.html`文件, 把来必力评论的注释去掉, 然后把Disqus评论加上注释即可
+
+## 写在最后
+
+### 致谢
+
+特别感谢[Yumoe](https://yumoe.com)提供了这么简洁大方的主题
