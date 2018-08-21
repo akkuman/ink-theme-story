@@ -18,6 +18,7 @@
 
 - 评论点击加载, 可以应对一些墙导致无法加载的场景
 - 图片懒加载
+- 支持来必力和Disqus评论系统, 默认为Disqus
 - ...
 
 ## 主题截图
@@ -37,7 +38,7 @@ git clone https://github.com/akkuman/ink-theme-story.git
 
 现在你可以看到blog目录下的ink-theme-story目录
 
-然后修改站点配置文件`blog/conconfig.yml`
+然后修改站点配置文件`blog/config.yml`
 
 站点配置文件一般如下: 
 
@@ -49,7 +50,7 @@ site:
     theme: ink-theme-story
     lang: zh
     url: "ink-theme-story.pancakeapps.com"
-    comment: Akkum4n
+    comment: Akkuman
     logo: "-/images/avatar.png"
     # link: "{category}/{year}/{month}/{day}/{title}.html"
     link: "{year}/{month}/{day}/{title}.html"
@@ -144,3 +145,11 @@ title: "关于本站"
 ```
 
 `author`字段可省略,看自己的喜好
+
+### 评论系统切换
+
+本主题的评论采用点击再动态加载的方式, 所以不用担心因为Disqus被墙的原因导致页面打不开, 只有当你点击`show comments`时才会开始加载评论
+
+本主题支持Disqus和来必力评论系统
+
+切换的话只需要修改站点配置文件`blog/config.yml`, 把`comment`字段的值修改成来必力的`data-uid`(*可在来必力后台代码管理中看到*), 然后打开`blog/ink-theme-story/_comment.html`文件, 把来必力评论的注释去掉, 然后把Disqus评论加上注释即可
