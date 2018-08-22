@@ -20,6 +20,14 @@
 
 <script>
     window.onload=function(){
+        var b = document.getElementsByClassName('b');
+        var w =  document.getElementsByClassName('w');
+        var menupgMargin = (b.length+w.length)*28;
+        var srhboxMargin = (b.length+w.length+3)*28;
+        var menusrhWidth = (b.length+w.length-1)*28;
+        document.getElementById('menu-page').style['margin-left'] = menupgMargin+'px';
+        document.getElementById('search-box').style['margin-left'] = srhboxMargin+'px';
+        document.getElementById('menu-search').style['width'] = menusrhWidth+'px';
         if (window.location.hash!='') {
           var i=window.location.hash.indexOf('#comment');
           var ii=window.location.hash.indexOf('#respond-post');
@@ -67,8 +75,6 @@
             $('#search-box').fadeOut(300);
         } else {
             $('#search-box').fadeIn(300);
-            $('#search-box').css('display', 'table-cell');
-            $('.header-logo').css('display', 'table-cell');
         }
     }
 

@@ -231,7 +231,6 @@ blockquote ul, blockquote ol {
 }
 .logo {
     margin: 2em 0 2em 2em;
-    max-height: 26px;
 }
 .site .title {
     margin: 0;
@@ -629,9 +628,9 @@ blockquote ul, blockquote ol {
 }
 #menu-page {
     display: none;
-    position: relative;
+    position: absolute;
     z-index: 100;
-    float: right;
+    margin: 26px 0 0 168px;
 }
 #menu-page li {
     transition: all .24s;
@@ -649,6 +648,8 @@ blockquote ul, blockquote ol {
 }
 #search-box {
     display: none;
+    position: absolute;
+    margin-left: 252px;
     overflow: hidden;
 }
 #search-box input {
@@ -737,7 +738,7 @@ blockquote ul, blockquote ol {
 }
 @media (max-width: 460px){
     #search-box {
-        margin-left: 0;
+        margin-left: 0 !important;
         margin-top: 22px;
     }
 }
