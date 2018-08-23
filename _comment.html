@@ -6,21 +6,47 @@
     <script>
         //来必力City版
         document.write('<div id="lv-container" data-id="city" data-uid="{{.Site.Comment}}"></div>');
-            var site_comment_load = function livere() {
-                (function(d, s) {
-                    var j, e = d.getElementsByTagName(s)[0];
-                    if (typeof LivereTower === 'function') { return; }
-                    j = d.createElement(s);
-                    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                    j.async = true;
-                    e.parentNode.insertBefore(j, e);
-                })(document, 'script');
-            }
-        document.write('');
+        var site_comment_load = function livere() {
+            (function(d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        }
     </script>
 </div>
 {{end}}
 -->
+
+<!--
+{{if .Site.Comment}}
+<noscript>为正常使用Gitment评论功能请激活JavaScript</noscript>
+<div id="comments" class="gen">
+    <script>
+        //Gitment
+        var site_comment_load = function gitment_comment() {
+            $('head').append('<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">');
+            $.getScript('https://imsun.github.io/gitment/dist/gitment.browser.js', function() {
+                var gitment_config = '{{.Site.Comment}}'.split(':');
+                var gitment = new Gitment({
+                    owner: gitment_config[0],
+                    repo: gitment_config[1],
+                    oauth: {
+                        client_id: gitment_config[2],
+                        client_secret: gitment_config[3],
+                    },
+                });
+                gitment.render('comments');
+            });
+        }
+    </script>
+</div>
+{{end}}
+-->
+
 
 {{if .Site.Comment}}
 <noscript>为正常使用Disqus评论功能请激活JavaScript</noscript>
