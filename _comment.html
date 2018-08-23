@@ -32,7 +32,7 @@
             $.getScript('https://imsun.github.io/gitment/dist/gitment.browser.js', function() {
                 var gitment_config = '{{.Site.Comment}}'.split(':');
                 var gitment = new Gitment({
-                    id: {{.Date}},
+                    id: String({{.Date}}),
                     owner: gitment_config[0],
                     repo: gitment_config[1],
                     oauth: {
