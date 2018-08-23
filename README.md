@@ -18,7 +18,7 @@
 
 - 评论点击加载, 可以应对一些墙导致无法加载的场景
 - 图片懒加载
-- 支持来必力和Disqus评论系统, 默认为Disqus
+- 评论系统支持来必力, Disqus, Gitment, 默认为Disqus
 - ...
 
 ## 主题截图
@@ -150,9 +150,30 @@ title: "关于本站"
 
 本主题的评论采用点击再动态加载的方式, 所以不用担心因为Disqus被墙的原因导致页面打不开, 只有当你点击`show comments`时才会开始加载评论
 
-本主题支持Disqus和来必力评论系统
+本主题的评论系统支持来必力, Disqus, Gitment
 
-切换的话只需要修改站点配置文件`blog/config.yml`, 把`comment`字段的值修改成来必力的`data-uid`(*可在来必力后台代码管理中看到*), 然后打开`blog/ink-theme-story/_comment.html`文件, 把来必力评论的注释去掉, 然后把Disqus评论加上注释即可
+#### 来必力Livere
+
+切换为来必力的话只需要修改站点配置文件`blog/config.yml`, 把`comment`字段的值修改成来必力的`data-uid`(*可在来必力后台代码管理中看到*), 然后打开`blog/ink-theme-story/_comment.html`文件, 把来必力评论的注释去掉, 然后把Disqus评论加上注释即可
+
+#### Gitment
+
+切换为Gitment的话同上修改, `comment`字段的格式为
+
+```yml
+comment: "owner:repo:client_id:client_secret"
+```
+
+其中各个的属性为
+
+```yml
+owner           #你的 GitHub ID
+repo            #存储评论的 repo
+client_id       #你的 client ID
+client_secret   #你的 client secret
+```
+
+然后打开`blog/ink-theme-story/_comment.html`文件, 把Gitment评论的注释去掉, 然后把Disqus评论加上注释即可
 
 ## 写在最后
 
