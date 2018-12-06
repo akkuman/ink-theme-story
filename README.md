@@ -18,7 +18,7 @@
 
 - 评论点击加载, 可以应对一些墙导致无法加载的场景
 - 图片懒加载
-- 评论系统支持来必力, Disqus, Gitment, 默认为Disqus
+- 评论系统支持来必力, Disqus, Gitment, Valine, 默认为Disqus
 - ...
 
 ## 主题截图
@@ -174,6 +174,22 @@ client_secret   #你的 client secret
 ```
 
 然后打开`blog/ink-theme-story/_comment.html`文件, 把Gitment评论的注释去掉, 然后把Disqus评论加上注释即可
+
+#### Valine
+切换为Gitment的话同上修改, `comment`字段的格式为
+
+```yml
+comment: "API_ID:API_Key"
+```
+
+其中各个的属性为
+
+```yml
+API_ID           #从LeanCloud的应用中得到的AppId
+API_Key          #从LeanCloud的应用中得到的APP Key.
+```
+
+然后打开`blog/ink-theme-story/_comment.html`文件, 把Valine评论的注释去掉, 然后把Disqus评论加上注释即可
 
 ## 写在最后
 
